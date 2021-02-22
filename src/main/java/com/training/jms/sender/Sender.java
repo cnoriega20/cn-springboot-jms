@@ -28,6 +28,6 @@ public class Sender {
                 .build();
 
         jmsTemplate.convertAndSend(JmsConfig.QUEUE, message);
-        log.info("Message Sent..");
+        log.info("Cesar-> Message Sent..");
     }
 }
