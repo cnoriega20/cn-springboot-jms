@@ -10,6 +10,7 @@ import org.springframework.jms.support.converter.MessageType;
 public class JmsConfig {
 
     public static final String QUEUE = "my-message";
+    public static final String SEND_RECEIVE_QUEUE = "Reply message";
 
     @Bean
     public MessageConverter messageConverter(){

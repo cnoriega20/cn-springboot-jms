@@ -9,7 +9,9 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
 import javax.jms.Message;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -23,6 +25,18 @@ public class ExampleMessageListener {
         log.info("Got a message");
         log.info("example Message",exampleMessage);
 
+
+    }
+
+    @JmsListener(destination = JmsConfig.SEND_RECEIVE_QUEUE)
+    public void listenForCustomMessage(@Payload ExampleMessage exampleMessage,
+                       @Headers MessageHeaders headers, Message message) throws JMSException {
+
+        ExampleMessage paylodMsg = ExampleMessage
+                .builder()
+                .id(UUID.randomUUID())
+                .message("Send and Receive")
+                .build();
 
     }
 }
